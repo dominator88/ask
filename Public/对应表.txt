@@ -1,0 +1,27 @@
+company
+03	fddbr
+04	dianhua
+06	qydm
+07	yzbm
+13	hydm
+15	qmcyrs
+16	zyjjzb[0]
+17	zyjjzb[1]
+18	zyjjzb[2]
+28	shxydm
+055	dwxxmc[5]
+1621	zyywhd[0]
+Q0001	sfck
+Q0002	sfss
+Q0003	djzclx
+Q0004	sfgykg
+Q0005	dwgm
+Q00061	zyywhd[2]
+Q00071	zyywhd[5]
+Q00081	zyywhd[8]
+Q00151	zw
+
+
+
+
+

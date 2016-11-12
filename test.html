@@ -1,0 +1,8 @@
+<script>
+var patt = new RegExp('/[\u4e00-\u9fa5]/');
+vv='ห๙ิฺตุ3233';
+flag = vv.match(patt);
+
+var result = /^[\u4e00-\u9fa5]+$/.test(vv);
+console.log(result);
+</script>

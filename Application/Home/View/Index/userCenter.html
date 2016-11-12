@@ -1,0 +1,663 @@
+ <!-- content start -->
+  <div class="admin-content">
+    <div class="admin-content-body">
+	<br>
+      <div class="am-tabs" data-am-tabs>
+     
+		<ul class="am-tabs-nav am-nav am-nav-tabs">
+                        <li class="am-active"><a href="#tab1"><strong class="am-text-primary am-text-lg">个人资料</strong> / Personal information</a></li>
+                        <!--li <if condition="$step == 2">class="am-active"</if>><a href="#tab2"><strong class="am-text-primary am-text-lg">企业资料</strong> / Enterprise information</a></li-->
+                    </ul>
+     <div class="am-tabs-bd">
+		<div class="am-tab-panel am-fade  am-in am-active" id="tab1">
+      <br>
+                            <hr>
+
+      <div class="am-g">
+        <div class="am-u-sm-12 am-u-md-4 am-u-md-push-8">
+          
+
+
+
+        </div>
+
+        <div class="am-u-sm-12 am-u-md-8 am-u-md-pull-4">
+          <form action="{:U('Home/Index/userCenter')}" class="am-form am-form-horizontal" method="post">
+			 <div class="am-form-group">
+              <label for="user-name" class="am-u-sm-3 am-form-label">用户名</label>
+              <div class="am-u-sm-9">
+                <input type="text" id="userName" name="username" value="{$user.username}" placeholder="用户名" disabled>
+               
+              </div>
+            </div>
+		   <div class="am-form-group">
+              <label for="user-name" class="am-u-sm-3 am-form-label">密码</label>
+              <div class="am-u-sm-9">
+                <input type="text" id="password" name="password" placeholder="密码位数不少于8位">
+               
+              </div>
+            </div>
+			 <div class="am-form-group">
+              <label for="user-name" class="am-u-sm-3 am-form-label">确认密码</label>
+              <div class="am-u-sm-9">
+                <input type="text" id="confrimPassword" name="confrimPassword" placeholder="确认密码">
+               
+              </div>
+            </div>
+		  
+            <div class="am-form-group">
+              <label for="user-name" class="am-u-sm-3 am-form-label"><font color=red>*</font>真实姓名</label>
+              <div class="am-u-sm-9">
+                <input type="text" id="realName" name="realname" value="{$user.realname}" placeholder="姓名 / Name">
+               
+              </div>
+            </div>
+
+            <div class="am-form-group">
+              <label for="user-email" class="am-u-sm-3 am-form-label">电子邮件</label>
+              <div class="am-u-sm-9">
+                <input type="email" id="email" name="email" value="{$user.email}" placeholder="输入你的电子邮件 / Email">
+               
+              </div>
+            </div>
+
+            <div class="am-form-group">
+              <label for="user-phone" class="am-u-sm-3 am-form-label"><font color=red>*</font>电话</label>
+              <div class="am-u-sm-9">
+                <input type="tel" id="telephone" name="telephone" value="{$user.telephone}"  placeholder="输入你的电话号码 / Telephone">
+              </div>
+            </div>
+			<div class="am-form-group">
+              <label for="user-phone" class="am-u-sm-3 am-form-label">分机号</label>
+              <div class="am-u-sm-9">
+                <input type="tel" id="subphone" name="subphone"  value="{$user.subphone}" placeholder="输入你的电话号码 / Telephone">
+              </div>
+            </div>
+			<div class="am-form-group">
+              <label for="user-weibo" class="am-u-sm-3 am-form-label">手机号</label>
+              <div class="am-u-sm-9">
+                <input type="text" id="mobilephone" name="mobilephone" value="{$user.mobilephone}"  placeholder="输入你的手机号">
+              </div>
+            </div>
+
+            <div class="am-form-group">
+              <label for="user-QQ" class="am-u-sm-3 am-form-label"><font color=red>*</font>统计从业资格证号</label>
+              <div class="am-u-sm-9">
+                <input type="text" pattern="[0-9]*" name="tjcyzgzh" id='tjcyzgzh' value="{$user.tjcyzgzh}"   placeholder="统计从业资格证号">
+              </div>
+            </div>
+
+            <div>
+			统计从业资格证号说明： 
+<br/><br/>
+按照国家统计局《统计从业资格认定办法》规定，统计调查对象中承担经常性政府统计调查任务的人员必须持有统计从业资格证书。为此，要求所有调查单位在登录后必须填写统计从业资格证号： 
+1、已经取得统计从业资格证的人员照实填写即可，不受影响。 
+2、需要上报统计数据而确实未曾取得统计从业资格证的调查单位人员，可在统计从业资格证号录入框输入数字"0"，并保存，然后重新登录即可。
+			
+			</div>
+
+  
+
+            <div class="am-form-group">
+              <div class="am-u-sm-9 am-u-sm-push-3">
+                <button  class="am-btn am-btn-primary" >保存修改</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+	  </div>
+	  
+	  <div class="am-tab-panel am-fade   am-in am-active " id="tab2">
+                            <br>
+                            <hr>
+                            <div class="am-g">
+                                <div class="am-u-sm-12 am-u-md-4 am-u-md-push-8">
+                                </div>
+									<div class="am-u-sm-12 am-u-md-8 am-u-md-pull-4">
+                                    
+                                    <style>
+                                    table input[type=text] {
+                                        border: none;
+                                        outline: none;
+                                        border-bottom: 1px solid #333;
+                                        background: transparent;
+                                    }
+                                    
+                                    table label {
+                                        font-size: 12px!important
+                                    }
+                                    
+                                    table tr td {
+                                        border-left: 1px solid #ddd;
+                                        border-right: 1px solid #ddd;
+                                    }
+                                    </style>
+									<!--form name="formCom" id="qform" action="{:U('Home/Index/userCenter')}"  method="post">
+                                    <div class="am-g" style="max-width: 1100px;">
+                                        <table class="am-table am-table-bordered " style="font-size: 12px">
+                                            <thead>
+                                                <tr>
+                                                    <th colspan="2">
+                                                        <h3 style="text-align: center;">企业基本情况调查表</h3>
+                                                        <div class="am-fr"><small>  表    号： N131表</small>
+                                                            <br>
+                                                            <small> 制表机关：   国家统计局</small>
+                                                            <br>
+                                                            <small>     文    号： 国统字(2015)95号</small>
+                                                            <br>
+                                                            <small> 有效期至：   2017年1月</small>
+                                                            <br>
+                                                            <small> 2015年10月</small>
+                                                            <br>
+                                                        </div>
+                                                    </th>
+                                                </tr>
+                                            </thead>
+											 
+                                            <tbody>
+                                                <tr>
+                                                    <td class="am-u-sm-6">
+                                                        <div class="am-u-sm-12">
+                                                            <h3 class="am-fl"><span class="am-badge am-badge-primary" >B</span>单位详细名称</h3>
+                                                            <label class="am-checkbox  am-fl am-u-sm-9" style="margin: 0">
+                                                                <input class="am-fl" type="text" data-am-ucheck style="width: 100%" name="dwxxmc" value="{$user['Company']['dwxxmc']}" >
+                                                            </label>
+                                                        </div>
+                                                    </td>
+                                                    <td class="am-u-sm-6">
+                                                        <div class="am-u-sm-12">
+                                                            <h3 class="am-fl"><span class="am-badge am-badge-primary" >B</span>组织机构代码</h3>
+                                                            <label class="am-checkbox am-u-sm-6 " style="margin: 0">
+                                                                <input class="am-fl" type="text" name="zzjgdm" value="{$user['Company']['zzjgdm']}"  data-am-ucheck>
+                                                            </label>
+                                                        </div>
+                                                        <div class="am-u-sm-12 tanjie">
+                                                            <h3 class="am-fl"><span class="am-badge am-badge-primary" >B</span>统一社会信用代码</h3>
+                                                            <label class="am-checkbox am-u-sm-6 " style="margin: 0">
+                                                                <input class="am-fl" type="text" name="shxydm"  value="{$user['Company']['shxydm']}"  data-am-ucheck>
+                                                            </label>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="am-u-sm-6">
+                                                        <div class="am-u-sm-12">
+                                                            <h3 class="am-fl"><span class="am-badge am-badge-primary" >03</span> 法定代表人(单位负责人)</h3>
+                                                            <label class="am-checkbox am-u-sm-6 " style="margin: 0">
+                                                                <input class="am-fl" type="text" name="fddbr"  value="{$user['Company']['fddbr']}"  data-am-ucheck>
+                                                            </label>
+                                                        </div>
+                                                    </td>
+                                                    <td class="am-u-sm-6">
+                                                        <div class="am-u-sm-12">
+                                                            <h3 class="am-fl"><span class="am-badge am-badge-primary" >04 </span>  联系电话(含区号)</h3>
+                                                            <label class="am-checkbox am-u-sm-6 " style="margin: 0">
+                                                                <input class="am-fl" type="text"  name="dianhua"   value="{$user['Company']['dianhua']}" data-am-ucheck>
+                                                            </label>
+                                                        </div>
+                                                    </td>
+                                                    <script>
+                                                    function textput(obj) {
+                                                        var oVal = obj.val();
+                                                        var aVal = []
+                                                        var eleText = obj.closest("td").find('input[type=text]')
+                                                        var eleHide = obj.closest("td").find('input[type=hidden]')
+                                                        for (var i = 0; i < eleText.length; i++) {
+                                                            aVal.push(eleText[i].value)
+                                                        }
+                                                        var json = {}
+                                                        for (var i = 0; i < aVal.length; i++) {
+                                                            json[i] = aVal[i]
+                                                        }
+                                                        eleHide.val(JSON.stringify(json))
+                                                    }
+													
+													
+													function textput2(obj) {
+                                                        var oVal = obj.val();
+														
+                                                        var aVal = []
+                                                        var eleText = obj.closest("tbody").find('input[type=text]')
+                                                        var eleHide = obj.closest("tbody").find('input[type=hidden]')
+                                                        for (var i = 0; i < eleText.length; i++) {
+                                                            aVal.push(eleText[i].value)
+                                                        }
+                                                        var json = {}
+                                                        for (var i = 0; i < aVal.length; i++) {
+                                                            json[i] = aVal[i]
+                                                        }
+                                                        eleHide.val(JSON.stringify(json))
+                                                    }
+													
+													function validata(){
+														$.ajax({
+														//    cache: true,
+															type: "POST",
+															url:"{:U('Home/CompanyRule/validata')}",
+															data:$('#qform').serialize(),// 你的formid
+															async: false,
+															error: function(request) {
+																alert("Connection error");
+															},
+															success: function(data) {
+																if(data != 'success'){
+																	$("#myalert").html(data);
+																	return false;
+																}else{
+																	$("#myalert").html('验证通过');
+																	return true;
+																}
+															}
+														});
+													  }
+                                                    </script>
+                                                </tr>
+                                                <tr>
+                                                    <td class="am-u-sm-6">
+                                                        <div class="am-u-sm-12">
+                                                            <h3><span class="am-badge am-badge-primary" >B</span>单位所在地</h3>
+                                                            <label class="am-checkbox  am-fl am-u-sm-9" style="margin: 0">
+                                                                <input class="am-fl" type="text" onchange="textput($(this));" value="{$user['Company']['dwszd'][0]}"   data-am-ucheck><span class="am-fl">省(自治区、直辖市)</span>
+                                                                <input class="am-fl" type="text"  onchange="textput($(this));" value="{$user['Company']['dwszd'][1]}"  data-am-ucheck><span class="am-fl">地(区、市、州、盟)</span>
+                                                                <input class="am-fl" type="text"  onchange="textput($(this));" value="{$user['Company']['dwszd'][2]}"  data-am-ucheck><span class="am-fl">县(区、市、旗)</span>
+                                                                <input class="am-fl" type="text"  onchange="textput($(this));" value="{$user['Company']['dwszd'][3]}"  data-am-ucheck><span class="am-fl">乡(镇)</span>
+                                                                <input class="am-fl" type="text"  onchange="textput($(this));" value="{$user['Company']['dwszd'][4]}"  data-am-ucheck><span class="am-fl">街(村)</span>
+                                                                <input class="am-fl" type="text"  onchange="textput($(this));" value="{$user['Company']['dwszd'][5]}"  data-am-ucheck><span class="am-fl">门牌号</span>
+																<input type="hidden" name="dwszd" value='{$user['Company']['dwszd']|json_encode=###,JSON_FORCE_OBJECT}'/>
+															</label>
+                                                        </div>
+                                                    </td>
+                                                    <td class="am-u-sm-6">
+                                                        <div class="am-u-sm-12">
+                                                            <h3 class="am-fl"><span class="am-badge am-badge-primary" >B</span> 区划代码</h3>
+                                                            <label class="am-checkbox am-u-sm-6 " style="margin: 0">
+                                                               <select data-am-selected="{btnSize: 'sm'}" name="qydm">
+											
+																  <option >所有区划代码{$user['Company']['qydm']}</option>
+																  <foreach name="QHDM" item="qh" key="key">
+																  <option value="{$key}" <if condition="$key==$user['Company']['qydm']">selected</if>>{$qh}{$key}</option>
+																  </foreach>
+																  
+																</select>
+                                                            </label>
+                                                        </div>
+                                                        <div class="am-u-sm-12 tanjie">
+                                                            <h3 class="am-fl"><span class="am-badge am-badge-primary" >B</span> 邮政编码</h3>
+                                                            <label class="am-checkbox am-u-sm-6 " style="margin: 0">
+                                                                <input class="am-fl" type="text"  name="yzbm"  value="{$user['Company']['yzbm']}"  data-am-ucheck>
+                                                            </label>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="am-u-sm-6">
+                                                        <div class="am-u-sm-12">
+                                                            <h3 class="am-fl"><span class="am-badge am-badge-primary" >03</span> 是否有出口业务</h3>
+                                                            <label class="am-radio am-u-sm-3 "  style="margin: 0;margin-left:10px">
+                                                                <input type="radio"  name="sfck" value="1"  value="" data-am-ucheck <if condition="$user['Company']['sfck']==1">checked </if>> 是
+                                                            </label>
+                                                            <label class="am-radio am-u-sm-3 am-fl" style="margin: 0">
+                                                                <input type="radio"  name="sfck" value="0"  value="" data-am-ucheck  <if condition="$user['Company']['sfck']==0">checked </if>>否
+                                                            </label>
+                                                        </div>
+                                                    </td>
+                                                    <td class="am-u-sm-6">
+                                                        <div class="am-u-sm-12">
+                                                            <h3 class="am-fl"><span class="am-badge am-badge-primary" >04 </span> 是否为上市公司</h3>
+                                                            <label class="am-radio am-u-sm-3 "  style="margin: 0;margin-left:10px">
+                                                                <input type="radio"  name="sfss" value="1" value="" data-am-ucheck <if condition="$user['Company']['sfss']==1">checked </if>> 是
+                                                            </label>
+                                                            <label class="am-radio am-u-sm-3 am-fl " style="margin: 0">
+                                                                <input type="radio"  name="sfss" value="0" value="" data-am-ucheck  <if condition="$user['Company']['sfss']==0">checked </if>> 否
+                                                            </label>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="2">
+                                                        <div class="am-u-sm-12">
+                                                            <h3><span class="am-badge am-badge-primary">2</span>    登记注册类型</h3>
+                                                            <label class="am-radio am-u-sm-6 am-u-lg-3 am-u-md-6" style="margin: 0">
+                                                                <input type="radio"  name="djzclx" value="110" data-am-ucheck <if condition="$user[Company][djzclx]=='110'">checked</if>> 110国有
+                                                            </label>
+                                                            <label class="am-radio am-u-sm-6 am-u-lg-3 am-u-md-6" style="margin: 0">
+                                                                <input type="radio"  name="djzclx" value="120" data-am-ucheck  <if condition="$user[Company][djzclx]=='120'">checked</if>> 120集体
+                                                            </label>
+                                                            <label class="am-radio am-u-sm-6 am-u-lg-3 am-u-md-6" style="margin: 0">
+                                                                <input type="radio"  name="djzclx" value="160" data-am-ucheck <if condition="$user[Company][djzclx]=='160'">checked</if>> 160股份有限公司
+                                                            </label>
+                                                            <label class="am-radio am-u-sm-6 am-u-lg-3 am-u-md-6" style="margin: 0">
+                                                                <input type="radio"  name="djzclx" value="130" data-am-ucheck <if condition="$user[Company][djzclx]=='130'">checked</if>> 130股份合作
+                                                            </label>
+                                                            <label class="am-radio am-u-sm-6 am-u-lg-3 am-u-md-6" style="margin: 0">
+                                                                <input type="radio"  name="djzclx" value="141" data-am-ucheck <if condition="$user[Company][djzclx]=='141'">checked</if>> 141国有联营
+                                                            </label>
+                                                            <label class="am-radio am-u-sm-6 am-u-lg-3 am-u-md-6" style="margin: 0">
+                                                                <input type="radio"  name="djzclx" value="142" data-am-ucheck <if condition="$user[Company][djzclx]=='142'">checked</if>> 142集体联营
+                                                            </label>
+                                                            <label class="am-radio am-u-sm-6 am-u-lg-3 am-u-md-6" style="margin: 0">
+                                                                <input type="radio"  name="djzclx" value="143" data-am-ucheck <if condition="$user[Company][djzclx]=='143'">checked</if>> 143国有与集体联营
+                                                            </label>
+                                                            <label class="am-radio am-u-sm-6 am-u-lg-3 am-u-md-6" style="margin: 0">
+                                                                <input type="radio"  name="djzclx" value="149" data-am-ucheck <if condition="$user[Company][djzclx]=='149'">checked</if>> 149其他联营
+                                                            </label>
+                                                            <label class="am-radio am-u-sm-6 am-u-lg-3 am-u-md-6" style="margin: 0">
+                                                                <input type="radio"  name="djzclx" value="151" data-am-ucheck <if condition="$user[Company][djzclx]=='151'">checked</if>> 151国有独资公司
+                                                            </label>
+                                                            <label class="am-radio am-u-sm-6 am-u-lg-3 am-u-md-6" style="margin: 0">
+                                                                <input type="radio"  name="djzclx" value="159" data-am-ucheck <if condition="$user[Company][djzclx]=='159'">checked</if>> 159其他有限责任公司
+                                                            </label>
+                                                            <label class="am-radio am-u-sm-6 am-u-lg-3 am-u-md-6" style="margin: 0">
+                                                                <input type="radio"  name="djzclx" value="160" data-am-ucheck <if condition="$user[Company][djzclx]=='160'">checked</if>> 160股份有限公司
+                                                            </label>
+                                                            <label class="am-radio am-u-sm-6 am-u-lg-3 am-u-md-6" style="margin: 0">
+                                                                <input type="radio"  name="djzclx" value="171" data-am-ucheck <if condition="$user[Company][djzclx]=='171'">checked</if>> 171私营独资
+                                                            </label>
+                                                            <label class="am-radio am-u-sm-6 am-u-lg-3 am-u-md-6" style="margin: 0">
+                                                                <input type="radio"  name="djzclx" value="172" data-am-ucheck <if condition="$user[Company][djzclx]=='172'">checked</if>> 172私营合伙
+                                                            </label>
+                                                            <label class="am-radio am-u-sm-6 am-u-lg-3 am-u-md-6" style="margin: 0">
+                                                                <input type="radio"  name="djzclx" value="173" data-am-ucheck <if condition="$user[Company][djzclx]=='173'">checked</if>> 173私营有限责任公司
+                                                            </label>
+                                                            <label class="am-radio am-u-sm-6 am-u-lg-3 am-u-md-6" style="margin: 0">
+                                                                <input type="radio"  name="djzclx" value="174" data-am-ucheck <if condition="$user[Company][djzclx]=='174'">checked</if>> 174私营股份有限公司
+                                                            </label>
+                                                            <label class="am-radio am-u-sm-6 am-u-lg-3 am-u-md-6" style="margin: 0">
+                                                                <input type="radio"  name="djzclx" value="190" data-am-ucheck <if condition="$user[Company][djzclx]=='190'">checked</if>> 190其他
+                                                            </label>
+                                                            <label class="am-radio am-u-sm-6 am-u-lg-3 am-u-md-6" style="margin: 0">
+                                                                <input type="radio"  name="djzclx" value="210" data-am-ucheck <if condition="$user[Company][djzclx]=='210'">checked</if>> 210与港澳台商合资经营
+                                                            </label>
+                                                            <label class="am-radio am-u-sm-6 am-u-lg-3 am-u-md-6" style="margin: 0">
+                                                                <input type="radio"  name="djzclx" value="220" data-am-ucheck <if condition="$user[Company][djzclx]=='220'">checked</if>> 220与港澳台商合作经营
+                                                            </label>
+                                                            <label class="am-radio am-u-sm-6 am-u-lg-3 am-u-md-6" style="margin: 0">
+                                                                <input type="radio"  name="djzclx" value="230" data-am-ucheck <if condition="$user[Company][djzclx]=='230'">checked</if>> 230港澳台独资
+                                                            </label>
+                                                            <label class="am-radio am-u-sm-6 am-u-lg-3 am-u-md-6" style="margin: 0">
+                                                                <input type="radio"  name="djzclx" value="240" data-am-ucheck <if condition="$user[Company][djzclx]=='240'">checked</if>> 240港澳台商投资股份有限公司
+                                                            </label>
+                                                            <label class="am-radio am-u-sm-6 am-u-lg-3 am-u-md-6" style="margin: 0">
+                                                                <input type="radio"  name="djzclx" value="290" data-am-ucheck <if condition="$user[Company][djzclx]=='290'">checked</if>> 290其他港澳台投资
+                                                            </label>
+                                                            <label class="am-radio am-u-sm-6 am-u-lg-3 am-u-md-6" style="margin: 0">
+                                                                <input type="radio"  name="djzclx" value="310" data-am-ucheck <if condition="$user[Company][djzclx]=='310'">checked</if>> 310中外合资经营
+                                                            </label>
+                                                            <label class="am-radio am-u-sm-6 am-u-lg-3 am-u-md-6" style="margin: 0">
+                                                                <input type="radio"  name="djzclx" value="320" data-am-ucheck <if condition="$user[Company][djzclx]=='320'">checked</if>> 320中外合作经营
+                                                            </label>
+                                                            <label class="am-radio am-u-sm-6 am-u-lg-3 am-u-md-6" style="margin: 0">
+                                                                <input type="radio"  name="djzclx" value="330" data-am-ucheck <if condition="$user[Company][djzclx]=='330'">checked</if>> 330外资企业
+                                                            </label>
+                                                            <label class="am-radio am-u-sm-6 am-u-lg-3 am-u-md-6" style="margin: 0">
+                                                                <input type="radio"  name="djzclx" value="340" data-am-ucheck <if condition="$user[Company][djzclx]=='340'">checked</if>> 340外商投资股份有限公司
+                                                            </label>
+                                                            <label class="am-radio am-u-sm-6 am-u-lg-3 am-u-md-6" style="margin: 0">
+                                                                <input type="radio"  name="djzclx" value="390" data-am-ucheck <if condition="$user[Company][djzclx]=='390'">checked</if>> 390其他外商投资
+                                                            </label>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="am-u-sm-6">
+                                                        <div class="am-u-sm-12">
+                                                            <h3 class="am-fl"><span class="am-badge am-badge-primary" >03</span> 是否为国有控股企业</h3>
+															
+                                                            <label class="am-radio am-u-sm-3 " style="margin: 0;margin-left:10px">
+                                                                <input type="radio"  name="sfgykg" value="1"  value="" data-am-ucheck <if condition="$user['Company']['sfgykg']==1">checked </if>> 是
+                                                            </label>
+                                                            <label class="am-radio am-u-sm-3 am-fl" style="margin: 0">
+                                                                <input type="radio"  name="sfgykg" value="0"  value="" data-am-ucheck  <if condition="$user['Company']['sfgykg']==0">checked </if>>否
+                                                            </label>
+                                                        </div>
+                                                    </td>
+                                                    <td class="am-u-sm-6">
+                                                        <div class="am-u-sm-12">
+                                                            <h3 class="am-fl am-u-sm-4"><span class="am-badge am-badge-primary" >04 </span> 单位规模</h3>
+                                                            <label class="am-radio am-u-sm-2 " style="margin: 0">
+                                                                <input type="radio"  name="dwgm" value="1"  data-am-ucheck <if condition="$user['Company']['dwgm']==1">checked </if>> 大型
+                                                            </label>
+                                                            <label class="am-radio am-u-sm-2 am-fl " style="margin: 0">
+                                                                <input type="radio"  name="dwgm" value="2"  data-am-ucheck  <if condition="$user['Company']['dwgm']==2">checked </if>> 中型
+                                                            </label>
+                                                            <label class="am-radio am-u-sm-2 am-fl " style="margin: 0">
+                                                                <input type="radio"  name="dwgm" value="3"  data-am-ucheck  <if condition="$user['Company']['dwgm']==3">checked </if>> 小型
+                                                            </label>
+                                                            <label class="am-radio am-u-sm-2 am-fl " style="margin: 0">
+                                                                <input type="radio"  name="dwgm" value="4"  data-am-ucheck  <if condition="$user['Company']['dwgm']==4">checked </if>> 微型
+                                                            </label>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="2">
+                                                        <div class="am-u-sm-12">
+                                                            <h3 class="am-u-sm-3 am-fl"><span class="am-badge am-badge-primary">2</span>        行业代码（统计机构填写）</h3>
+                                                            <label class="am-radio am-u-sm-3 am-fl" style="margin: 0">
+                                                                <input type="text" id="hydm"   name="hydm" value="{$user['Company']['hydm']}" data-am-ucheck readonly="true">
+																<select id="sheng" am-u-sm-3 am-fl"  data-am-selected>
+                                                    <option value="0">--请选择--</option>
+                                                </select>
+                                                <select id='shi' data-am-selected>
+                                                    <option value="0">--请选择--</option>
+                                                </select>
+                                                            </label>
+															
+															<script type="text/javascript">
+															var areaData = {
+	'sheng': {$parentstr},
+
+    'shi': {
+        {$substr}
+    }
+};
+															
+                                        $(function() {
+
+                                            var sheng = areaData.sheng;
+                                            var $sheng = $('#sheng');
+                                            var $shi = $('#shi');
+                                            var $xian = $('#xian');
+                                            var shiIndex = 0;
+                                            var sb = '';
+                                            var str='';
+                                            for (var i = 0; i < sheng.length; i++) {
+                                                for (key in sheng[i]) {
+                                                    var $option = $('<option value=' + key + '>' + sheng[i][key] + '</option>');
+                                                    $sheng.append($option);
+                                                }
+                                            }
+
+                                            $sheng.change(function() {
+                                                shiIndex = this.selectedIndex - 1;
+                                                if (shiIndex < 0) {
+
+                                                } else {
+                                                    var shi = areaData.shi['a_' + shiIndex];
+                                                    $shi.html('<option value="0">--请选择--</option>');
+                                                    $xian.html('<option value="0">--请选择--</option>');
+                                                    for (var i = 0; i < shi.length; i++) {
+                                                        for (key2 in shi[i]) {
+                                                            var $option = $('<option value=' + key2 + '>' + shi[i][key2] + '</option>');
+                                                            $shi.append($option);
+                                                        }
+                                                    }
+                                                }
+
+                                                sb = $("#sheng").find('option').eq(this.selectedIndex).val()
+                                                str=$("#sheng").find('option').eq(this.selectedIndex).html()
+
+                                            });
+                                            $shi.change(function() {
+
+                                                var sss = $("#shi").find('option').eq(this.selectedIndex).val()
+                                                var sstr=$("#shi").find('option').eq(this.selectedIndex).html()
+                                                // 最后提交的参数代码在subhangye隐藏表单的value和data—str里
+
+                                                $("#hydm").val( + sss)
+                                                $("#hydm").attr('data-str', str+","+sstr);
+                                            });
+
+
+                                            
+
+                                        });
+										function submitForm(obj){
+											console.log(obj.value);
+											var f =$("#qform")[0];
+											f.action='/index.php/Home/Index/UserCenter/status/'+obj.value;
+											f.submit();
+										}
+										
+										 function cancelForm(){
+
+			location.href = '/index.php/Home/Index/cancelCompany';
+
+		  } 
+                                        </script>
+															
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="2">
+                                                        <div class="am-u-sm-12">
+                                                            <h3 class="am-u-sm-2 am-fl"><span class="am-badge am-badge-primary">2</span>            从业人员期末人数</h3>
+                                                            <label class="am-radio am-u-sm-10 am-fl" style="margin: 0">
+                                                                <input type="text"  name="qmcyrs"   value="{$user['Company']['qmcyrs']}"  data-am-ucheck>
+                                                            </label>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="2">
+                                                        <div class="am-u-sm-12">
+                                                            <h3 class="am-u-sm-12 am-fl"><span class="am-badge am-badge-primary">2</span>            主要经济指标（不保留小数位）</h3>
+                                                            <label class="am-radio am-u-sm-4 am-fl" style="margin: 0">
+                                                                营业收入
+                                                                <input type="text" value="{$user['Company']['zyjjzb'][0]}"   onchange="textput($(this));"  data-am-ucheck>千元
+                                                            </label>
+                                                            <label class="am-radio am-u-sm-4 am-fl" style="margin: 0">
+                                                                其中：主营业务收入
+                                                                <input type="text" value="{$user['Company']['zyjjzb'][1]}"   onchange="textput($(this));" data-am-ucheck>千元
+                                                            </label>
+                                                            <label class="am-radio am-u-sm-4 am-fl" style="margin: 0">
+                                                                资产总计
+                                                                <input type="text"    value="{$user['Company']['zyjjzb'][2]}"   onchange="textput($(this));"  data-am-ucheck>千元
+                                                            </label>
+															<input type="hidden" name="zyjjzb" value='{$user["Company"]["zyjjzb"]|json_encode=###,JSON_FORCE_OBJECT}'/>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="2">
+                                                        <div class="am-u-sm-12">
+                                                            <h3 class="am-u-sm-12 am-fl"><span class="am-badge am-badge-primary">2</span>               主要业务活动(填写营业收入份额最大的三项业务活动或主要产品，营业收入所占份额不保留小数)</h3>
+                                                            <table class="am-table am-table-bordered am-table-striped am-table-compact">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th>业务活动(或主要产品)名称</th>
+                                                                        <th>行业代码</th>
+                                                                        <th>营业收入所占份额约为(%)</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                     <tr  >
+                                                            <td>
+                                                                <input type="text"  value="{$user['Company']['zyywhd'][0]}"   onchange="textput2($(this));" />
+                                                            </td>
+                                                            <td>
+                                                                <input type="text" value="{$user['Company']['zyywhd'][1]}"  onchange="textput2($(this));" />
+                                                            </td>
+                                                            <td>
+                                                                <input type="text" value="{$user['Company']['zyywhd'][2]}"  onchange="textput2($(this));" />
+                                                            </td>
+															
+                                                        </tr>
+                                                        <tr  >
+                                                            <td>
+                                                                <input type="text" value="{$user['Company']['zyywhd'][3]}"  onchange="textput2($(this));" />
+                                                            </td>
+                                                            <td>
+                                                                <input type="text" value="{$user['Company']['zyywhd'][4]}"  onchange="textput2($(this));" />
+                                                            </td>
+                                                            <td>
+                                                                <input type="text" value="{$user['Company']['zyywhd'][5]}"  onchange="textput2($(this));" />
+                                                            </td>
+															
+                                                        </tr>
+                                                        <tr  >
+                                                            <td>
+                                                                <input type="text" value="{$user['Company']['zyywhd'][6]}"  onchange="textput2($(this));"/>
+                                                            </td>
+                                                            <td>
+                                                                <input type="text" value="{$user['Company']['zyywhd'][7]}"  onchange="textput2($(this));" />
+                                                            </td>
+                                                            <td>
+                                                                <input type="text" value="{$user['Company']['zyywhd'][8]}"  onchange="textput2($(this));" />
+																
+                                                            </td>
+															
+                                                        </tr>
+														<input type="hidden" name="zyywhd" value='{$user['Company']['zyywhd']|json_encode=###,JSON_FORCE_OBJECT}' />
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+											
+                                        </table>
+                                    </div>
+									
+									<if condition="$user['Company']['status'] != 2">
+										<button	onClick="validata()"
+										  type="button"
+										  class="am-btn am-btn-primary"
+										  data-am-modal="{target: '#my-alert'}">
+										  审核
+										</button>
+
+										<div class="am-modal am-modal-alert" tabindex="-1" id="my-alert">
+										  <div class="am-modal-dialog">
+											<div class="am-modal-hd">企业填表信息框</div>
+											<div class="am-modal-bd" id="myalert">
+											  验证通过！
+											</div>
+											<div class="am-modal-footer">
+											  <span class="am-modal-btn">确定</span>
+											</div>
+										  </div>
+										</div>								
+									 <button class="am-btn am-btn-primary" value="1"  onClick="javascript:submitForm(this);" <if condition="$date[start_date] gt date('Y-m-d',time()) || $date[expire_date] lt date('Y-m-d',time()) ">disabled</if>>保存</button>
+                                    <button class="am-btn am-btn-primary"  value="2"  onClick="javascript:submitForm(this);" <if condition="$date[start_date] gt date('Y-m-d',time()) || $date[expire_date] lt date('Y-m-d',time()) ">disabled</if>>提交</button>
+									<elseif condition="$user['Company']['status'] == 2"/>
+									
+								
+									 <button type="button" class="am-btn am-btn-primary"    value="2"  onClick="javascript:cancelForm(this);" <if condition="$date[start_date] gt date('Y-m-d',time()) || $date[expire_date] lt date('Y-m-d',time())  ">disabled</if>>撤销提交</button>
+								
+									  <button  class="am-btn am-btn-reset" onclick="javascript:history.go(-1);" >返回</button>
+									</if>
+                                </div>
+								
+                                <!-- <2016/6/15修改>e -->
+                            </div>
+                        </div>
+						</form-->
+                    </div>
+                                   
+                                </div>
+                            </div>
+                        </div>
+	  
+	  </div>
+    </div>
+	</div>
+    <footer class="admin-content-footer">
+      <hr>
+ 
+    </footer>
+
+  </div>
+  <!-- content end -->

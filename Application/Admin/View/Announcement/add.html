@@ -1,0 +1,90 @@
+<script src="/__PUBLIC__/ueditor/ueditor.config.js"></script>
+    <script src="/__PUBLIC__/ueditor/ueditor.all.js"></script>
+    <script src="/__PUBLIC__/ueditor/lang/zh-cn/zh-cn.js"></script>
+<form action="{:U('Announcement/add')}" method="post" class="form-horizontal">
+
+    <div class="form-group">
+        <label class="col-md-3 col-xs-12 control-label"></label>
+        <div class="col-md-6 col-xs-12">
+            <h2>添加公告</h2>
+        </div>
+    </div>
+
+    <!--div class="form-group">
+        <label class="col-md-3 col-xs-12 control-label">公告类型</label>
+        <div class="col-md-6 col-xs-12">                                                                                            
+            <select name="type" class="form-control select">
+                <option value="survey" <eq name="type" value="survey">selected="selected"</eq> >调研卷</option>
+               
+            </select>
+        </div>
+        
+    </div-->
+
+
+	
+    <div class="form-group">
+        <label class="col-md-3 col-xs-12 control-label">公告标题</label>
+        <div class="col-md-6 col-xs-12">                                            
+            <input name="title" type="text" class="form-control" value="{$title}" />
+        </div>
+    </div>
+    
+	 <div class="form-group">
+        <label class="col-md-3 col-xs-12 control-label">公告描述</label>
+        <div class="col-md-6 col-xs-12">                                            
+           <script id="container" name="content"  type="text/plain">
+		  
+		   </script>  
+        </div>
+    </div>
+	
+     <div class="form-group">
+	  <label class="col-md-3 col-xs-12 control-label">选项</label>
+	  <div class="col-md-6 col-xs-12"> 
+	 
+		置顶<input  type="checkbox" name="top" value=1 />  推荐<input type="checkbox" name="recommend" value=1 />  排序<input type="text" name="listorder" value="0">
+		</div>
+	 </div>
+     
+
+    <div>
+        <div class="col-md-3 col-xs-12"></div>
+        <div class="col-md-6 col-xs-12">
+            <present name="errorNote">
+                <div class="alert alert-danger" role="alert">
+                    <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <strong>{$errorNote}</strong>
+                </div>                        
+            </present>
+            <div class="form-group">
+                <div class="col-md-6"><input type="reset" class="btn btn-block btn-default" value=" 清 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 空 " /></div>
+                <div class="col-md-6"><button class="btn btn-block btn-info pull-right"> 提 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 交 </button></div>
+            </div>
+        </div>
+    </div>
+
+</form>
+ <script type="text/javascript">
+        $(document).ready(function(){
+            
+            var ue = UE.getEditor('container',{
+                toolbars:[[
+                    'undo', 'redo', '|',
+                    'bold', 'italic', 'underline', 'fontborder', 'strikethrough', 'removeformat', 'formatmatch', 'autotypeset', 'blockquote', 'pasteplain', '|', 'forecolor', 'backcolor', 'insertorderedlist', 'insertunorderedlist', 'selectall', 'cleardoc', '|',
+                    'rowspacingtop', 'rowspacingbottom', 'lineheight', '|',
+                    'customstyle', 'paragraph', 'fontfamily', 'fontsize', '|',
+                    'directionalityltr', 'directionalityrtl', 'indent', '|',
+                    'justifyleft', 'justifycenter', 'justifyright', 'justifyjustify', '|',
+                    'link', 'unlink', '|', 'imagenone', 'imageleft', 'imageright', 'imagecenter', '|',
+                    'simpleupload', 'insertimage', 'emotion', 'attachment', 'map','pagebreak', '|',
+                    'horizontal', 'date', 'time', 'spechars', '|',
+                    'inserttable', 'deletetable', 'insertparagraphbeforetable', 'insertrow', 'deleterow', 'insertcol', 'deletecol', 'mergecells', 'mergeright', 'mergedown', 'splittocells', 'splittorows', 'splittocols', '|',
+                    'print', 'searchreplace', 'drafts'
+                ]],
+                initialFrameHeight:250
+            });
+            
+        });
+        
+    </script>

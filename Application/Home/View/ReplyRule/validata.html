@@ -1,0 +1,30 @@
+﻿{__NOLAYOUT__}
+<meta charset="utf-8">
+<table  style="font-size:12px!important" class="am-table am-table-bordered" id="shengcha2">
+<tr class="am-primary">
+<th class="am-text-center">序号</th>
+<th  class="am-text-center">类型</th>
+<th  class="am-text-center">题号</th>
+<th>说明</th>
+<th>澄清说明</th>
+</tr>
+
+<foreach name="outmsg" item="out" key="key">
+<tr  class="am-warning">
+<td  class="am-text-center">{$key+1}</td>
+<td  class="am-text-center">{$out.type}</td>
+<td  class="am-text-center">{$out.num}</td>
+<td>{$out.msg}</td>
+<td><if condition="$out['type']=='提示' || $out['type']=='警告'"><input id="{$out.code}" type="text" onchange="shuoming($(this))" value="{$remarks[$out[code]]}"  placeholder="填写的文字大于6个" size=50 /></if></td>
+</tr>
+</foreach>
+</table>
+
+<script>
+$(function(){
+
+	
+
+})
+
+</script>

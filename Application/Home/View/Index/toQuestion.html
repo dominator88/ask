@@ -1,0 +1,554 @@
+<style>
+    .admin-main{
+        padding-bottom: 51px
+    }
+</style>
+<!-- content start -->
+        <div class="admin-content">
+		
+		
+		
+		
+		
+            <div class="admin-content-body">
+              
+                <!--
+  作者：1119696785@qq.com
+  时间：2016-06-02
+  描述：
+-->
+<style>
+        input[type=text]{
+            border:none;border-bottom: 1px solid #000;outline: none;background: transparent;
+        }
+		table{font-size:12px!important}
+		table h3{margin:0;padding:0}
+		table label{font-size:12px!important}
+            </style>
+			<form id="qform" action="{:U('Home/Index/submitQuestion',array('questionnaireId'=>I('questionnaireId')))}" method="post">
+                <div class="am-g" style="max-width: 900px">
+				
+           <table class="am-table am-table-bordered am-table-striped am-table-hover ">
+    <thead>
+        <tr>
+            <th colspan="2"><h3 style="text-align: center;font-size:18px">制造业采购经理调查问卷</h3>
+<div class="am-fr"><small> 表    号： N241表</small><br>
+<small> 制表机关：   国家统计局</small><br>
+<small>     文    号： 国统字(2015)95号</small><br>
+<small> 有效期至：   2017年1月</small><br>
+</div>
+<small class="am-fl" style="width:100%;display:block;text-align:center"> {$Think.const.NOW_TIME|date="Y年m月",###}</small>
+
+
+
+            </th>
+           
+        </tr>
+    </thead>
+	
+    <tbody>
+    <tr style="max-height: 64px;min-height:64px">
+            <td class="am-u-sm-6"style="max-height: 64px;min-height: 64px" >
+               <div class="am-u-sm-12 am-cf" >
+                        <h3 class=" "><span class="am-badge am-badge-primary">A</span>单位详细名称</h3>                       
+                        <label class="am-checkbox am-u-sm-12" style="margin: 0">
+                            <input type="text"  data-am-ucheck style="width: 100%" value="{$user.Company.dwxxmc}" disabled> 
+                        </label>
+                       
+                    </div>
+            </td>
+            <td class="am-u-sm-6">
+            
+               <div class="am-u-sm-12" >
+                       
+                       <h3 class="am-fl" ><span class="am-badge am-badge-primary" >B</span>组织机构代码</h3>
+                        <label class="am-checkbox am-u-sm-6 " style="margin: 0">
+                            <input  class="am-fl" type="text"  data-am-ucheck  value="{$user.Company.zzjgdm}" disabled> 
+                        </label>
+                        
+                       
+                    </div> 
+                    <div class="am-u-sm-12 tanjie" >
+                       
+                        <h3 class="am-fl" >	统一社会信用代码</h3>
+                        <label class="am-checkbox am-u-sm-6 " style="margin: 0">
+                           <input  class="am-fl" type="text"  value="{$user[Company][shxydm]}" data-am-ucheck disabled> 
+                        </label>
+                        
+                       
+                    </div> 
+
+            </td>
+            
+        </tr>
+		
+		 <volist name="data" id="d">
+		 <if condition="$d['qtype'] eq 'text'">
+        <tr>
+             <td  colspan="2">  
+			 <div class="am-u-sm-12" >
+                       
+                       <h3 class="am-fl" >{$d.tihao} {$d.qname}</h3>
+					
+					    <foreach name="d['options']" item="option" key="k">
+						
+                        <label class="am-checkbox am-u-sm-12 " style="margin: 0">
+                                {$option[text]|trim}<input  class="am-fl" type="text" value="{$option[value]}" name="{$d.qid}{$k}"  onchange="textput($(this))"  data-am-ucheck  style="width: 100%"/> 
+                        </label>
+						
+						</foreach>
+                        
+                        <input type="hidden" name="{$d.qid}"  value='{$d.answer}'/> 
+                       
+                    </div></td> 
+
+        </tr>
+		
+		 <elseif condition="$d['qtype'] eq 'checkbox'"/>
+        <tr >
+            <td colspan="2">
+               <div class="am-u-sm-12 tanjie" id="tanjei1">
+                        <h3>{$d.tihao} {$d.qname}</h3>
+						
+                       <foreach name="d['options']" item="option" key="k">
+						<if condition="$option[type]=='checkbox'">
+						
+						
+                        <label class="am-checkbox am-u-sm-3" style="margin: 0">
+                            <input type="checkbox" value="{$k}" name="{$d.qid}"  data-am-ucheck onchange="s($(this),'#id{$d.qid}')" <if condition="$option[selected]==1">checked</if>/>  {$option['text']}
+                        </label>
+                       <elseif condition="$option[type]=='checkbox_othertext'"/>
+						<label class="am-checkbox am-u-sm-12 " style="margin: 0">
+							  <input type="checkbox" value="{$k}" name="other{$d.qid}"  onchange="s($(this),'#id{$d.qid}')" data-am-ucheck  <if condition="$option[selected]==1">checked</if>/>  其它<input type="text" id="o_other" value="{$option.text}" name="othertext{$d.qid}" onchange="other()"/>
+						</label>
+						</if>
+					   
+						</foreach>
+                       <input type="hidden" id="id{$d.qid}" name="{$d.qid}" value='{$d.answer}' />
+
+                    </div>
+
+
+            </td>
+            
+        </tr>
+        <elseif condition="$d['qtype'] eq 'radio'"/>
+        <tr >
+            <td colspan="2">
+              <div class="am-u-sm-12">
+                        <h3>{$d.tihao} {$d.qname}</h3>
+					
+                        <foreach name="d['options']" item="option" key="k">
+						 
+						<if condition="$option['text'] neq ''">
+                        <label class="am-radio am-u-sm-6 am-u-lg-3 am-u-md-6" style="margin: 0">
+                            <input type="radio" name="{$d.qid}" value="{$k}" data-am-ucheck <if condition="$option[selected]==1">checked</if>/> {$option['text']}
+                        </label>
+                        </if>
+				
+						</foreach>
+                        
+                    </div>
+
+            </td>
+            
+        </tr>
+		 <elseif condition="$d['qtype'] eq 'checkbox_othertext'"/>
+		  <tr >
+            <td colspan="2">
+              <div class="am-u-sm-12">
+                        <h3>{$d.tihao} {$d.qname}</h3>
+			 </div>
+
+            </td>
+            
+        </tr>			
+		</if>
+		</volist>
+    </tbody>
+	
+</table>
+
+<div>
+采购经理(填报人)：	
+<input  type="text" value="{$user.realname}" name="lxrxm" onchange="textput($(this))" data-am-ucheck="" style="width: 10%" disabled>
+电话：	
+<input  type="text" value="{$user.telephone}" name="lxdianhua" onchange="textput($(this))" data-am-ucheck="" style="width: 10%" disabled>
+分机号：<input  type="text" value="{$user.subphone}" name="lxr" onchange="textput($(this))" data-am-ucheck="" style="width: 10%" disabled>	
+报出日期：	
+<input  type="text" value="<if condition="$questionInfo[reply][createtime]!=''">{$questionInfo[reply][createtime]|date='Y-m-d',###}</if>" name="lxr" onchange="textput($(this))" data-am-ucheck="" style="width: 10%" disabled>
+ <br/>
+</div>
+
+<!----->
+<!--弹出---s--->
+
+<!------>
+  <style>
+  #accordion{position: fixed;bottom: 0px;right: 0;}
+ .am-panel-hd{padding:0}
+ #accordionmsg{height:300px;overflow-y:auto}
+  </style>
+      
+        <!------>
+
+<!--弹出---e--->
+                </div>
+               <div class="am-center" style="width: 900px">
+			  <input type="hidden" id="haha" name="shuoming"  value='{$questionInfo["remark"]}'/>
+				<input type="hidden" id="validatas" name="validatas" />
+			   <if condition="$history!=1 && $questionInfo[start_date] elt $questionInfo[nowdate] && $questionInfo[expire_date] egt $questionInfo[nowdate]">
+			  
+                   <if condition="($questionInfo[reply][status] == 1 || $questionInfo[reply][status] == 0) ">
+				    <button
+					onClick="validata(this)"
+  type="button" value="9"
+  class="am-btn am-btn-primary"
+ >
+  审核
+</button>
+
+
+
+
+
+
+
+
+
+				
+                    <button type="button" class="am-btn am-btn-primary"  style="margin: 20px;" value="1" onClick="javascript:subajax(this);" >保存</button>
+					
+					
+                <button type="button" class="am-btn am-btn-primary" style="margin: 20px;margin-right: 5px;"  value="2" onClick="javascript:submitForm(this);"  >确定提交</button>
+				<else/>
+				<form id="cancelForm" action="" method="post" />
+				 <button type="button" class="am-btn am-btn-primary"  style="margin: 20px;" value="3"  onClick="javascript:cancelForm()">撤销提交</button>
+				</form>
+											
+											  <a  class="am-btn am-btn-reset" href="{:U('Home/Index/newQuestionnaires')}" >返回</a>
+											
+											
+										
+                                           
+				
+				</if>
+			
+				<else/>
+				 <!--a  class="am-btn am-btn-reset" href="{:U('Home/Index/newQuestionnaires')}" >返回</a-->
+				 <button  class="am-btn am-btn-reset" onclick="javascript:history.go(-1);" >返回</button>
+				</if>
+               </div>
+  </form>              
+
+
+
+                <!--
+  作者：1119696785@qq.com
+  时间：2016-06-02
+  描述：
+-->
+                <footer class="admin-content-footer">
+                    <hr>
+                    <p class="am-padding-left"></p>
+                </footer>
+            </div>
+			
+			<div class="am-modal am-modal-alert" tabindex="-1" id="my-alert"  style="z-index:1600;" >
+  <div class="am-modal-dialog"  style="border:4px solid #333">
+    <div class="am-modal-hd">信息提示</div>
+    <div class="am-modal-bd" id="myalert">
+      验证通过
+    </div>
+    <div class="am-modal-footer">
+      <span class="am-modal-btn">确定</span>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="am-modal am-modal-confirm" tabindex="-1" id="my-confirm"   style="z-index:1600;" >
+  <div class="am-modal-dialog">
+    <div class="am-modal-hd">信息提示</div>
+    <div class="am-modal-bd"   id="myconfirm">
+      你，确定要删除这条记录吗？
+    </div>
+    <div class="am-modal-footer">
+      <span class="am-modal-btn" data-am-modal-cancel>取消</span>
+      <span class="am-modal-btn" data-am-modal-confirm>确定提交</span>
+    </div>
+  </div>
+</div>
+
+<div class="am-modal am-modal-confirm" tabindex="-1" id="my-confirm2"    style="z-index:1600;" >
+  <div class="am-modal-dialog">
+    <div class="am-modal-hd">信息提示</div>
+    <div class="am-modal-bd"   id="myconfirm2">
+      你，确定要删除这条记录吗？
+    </div>
+    <div class="am-modal-footer">
+ 
+      <span class="am-modal-btn" data-am-modal-confirm>确定</span>
+    </div>
+  </div>
+</div>
+			
+			
+            <!-- content end -->
+        </div>
+		
+		<script >
+		
+		function shuoming(obj){
+
+			var j=[];
+			var jsons={}
+			$("#shengcha2").find("input[type=text]").each(function(index, el) {
+				var vv=$(el).val();
+				var sid=$(el).attr("id");
+				if(vv.length < 6 && vv){alert('字符长度不足');}
+  				j.push(vv);
+  				 jsons[sid]=j[index]
+			});
+         
+			$('#haha').val(JSON.stringify(jsons))
+			
+		}
+
+$(function() {
+  $('#doc-modal-list').find('.am-icon-close').add('#doc-confirm-toggle').
+    on('click', function() {
+      $('#my-confirm').modal({
+        relatedTarget: this,
+        onConfirm: function(options) {
+          var $link = $(this.relatedTarget).prev('a');
+          var msg = $link.length ? '你要删除的链接 ID 为 ' + $link.data('id') :
+            '确定了，但不知道要整哪样';
+          alert(msg);
+        },
+        // closeOnConfirm: false,
+        onCancel: function() {
+      //    alert('算求，不弄了');
+        }
+      });
+    });
+});
+
+confirmt = function(obj,data) {
+	$("#myconfirm").html("您的问卷中共有["+Number(data.statusInfo.cw+data.statusInfo.jg+data.statusInfo.ts)+"]条错误,强制性错误["+data.statusInfo.cw+"]条,核实性错误["+data.statusInfo.jg+"]条,可忽略性错误["+data.statusInfo.ts+"]条，请填写说明，可以提交，是否直接提交？");
+      $('#my-confirm').modal({
+        relatedTarget: this,
+        onConfirm: function(options) {
+          var $link = $(this.relatedTarget).prev('a');
+          var msg = $link.length ? '你要删除的链接 ID 为 ' + $link.data('id') :
+            '确定了，但不知道要整哪样';
+			$("#validatas").val(data.content);
+			
+			subajax(obj);
+        //  alert(msg);
+        },
+        // closeOnConfirm: false,
+        onCancel: function() {
+      //    alert('算求，不弄了');
+        }
+      });
+    }
+	
+	
+	confirmt2 = function(data) {
+	$("#myconfirm2").html("您的问卷中共有["+Number(data.statusInfo.cw+data.statusInfo.jg+data.statusInfo.ts)+"]条错误,强制性错误["+data.statusInfo.cw+"]条,核实性错误["+data.statusInfo.jg+"]条,可忽略性错误["+data.statusInfo.ts+"]条");
+      $('#my-confirm2').modal({
+        relatedTarget: this,
+        onConfirm: function(options) {
+          var $link = $(this.relatedTarget).prev('a');
+          var msg = $link.length ? '你要删除的链接 ID 为 ' + $link.data('id') :
+            '确定了，但不知道要整哪样';
+			
+			
+			//subajax(obj);
+        //  alert(msg);
+        },
+        // closeOnConfirm: false,
+      
+      });
+    }
+		
+		function other(){
+		
+			if($("#o_other").val().length>0){
+			$("#o_other").parent().find("input[type=checkbox]").attr("checked","checked")
+			}
+			
+			$("#id9").val($("#o_other").val())
+			
+		}
+		
+		
+		
+		
+		
+        function s(obj, id2) {
+            var vp = obj.parent().siblings(id2),
+                v;
+
+            var arr = $(id2).val().split(",");
+             if (!arr[0]) {arr=[]}
+            if (obj.is(':checked')) {
+                v = obj.val()
+                arr.push(v);
+                for (var i = 0; i < arr.length; i++) {
+                    for (var j = i + 1; j < arr.length; j++) {
+                        if (arr[i] == arr[j]) {
+                            arr.splice(j, 1);
+                            j--;
+                        }
+                    }
+                }
+            vp.val(arr);
+            } else {
+                v = obj.val();
+
+                for (var i = 0; i < arr.length; i++) {
+                    if (arr[i] === v) {
+                        arr.splice(i, 1);
+                        i--;
+                    }
+                }
+                vp.val(arr);
+            }
+        }
+		
+		function  textput (obj) {
+                            var oVal=obj.val();
+                            var aVal=[]
+                            var eleText=obj.closest("td").find('input[type=text]')
+                            var eleHide=obj.closest("td").find('input[type=hidden]')
+                            for (var i = 0; i < eleText.length; i++) {
+                                aVal.push( eleText[i].value)
+                            }
+                           var json={}
+                           for (var i = 0; i < aVal.length; i++) {
+                               json[i+1]=aVal[i]
+                           }
+                            eleHide.val(JSON.stringify(json))
+                        }
+
+       
+		
+		function submitForm(obj){
+		validata(obj);
+
+		}
+		function subajax(obj){
+
+		
+        var f =$("form")[0];
+        f.action='/index.php/Home/Index/submitQuestion/questionnaireId/'+{$Think.get.questionnaireId}+"/status/"+obj.value;
+		f.submit();
+           }
+		 
+		  
+		  function validata(obj){
+
+			$.ajax({
+            //    cache: true,
+                type: "POST",
+                url:"{:U('Home/ReplyRule/validata',array('questionid'=>I('questionnaireId'),'rId'=>I('rId')))}",
+                data:$('#qform').serialize(),// 你的formid
+                async: false,
+                error: function(request) {
+                    alert("Connection error");
+                },
+                success: function(data) {
+				$("#shengcha").html("审核信息&nbsp;<span style='font-size:20px'>↓</span>")
+					if(obj.value==9){data.status=2;}	
+						
+					if(data.status == 0){
+					    subajax(obj);
+					}else if(data.status==1){
+						$("#myalert2").html(data.content);
+						
+						<if condition="$history!=1">
+					confirmt(obj,data);
+					 shengheshow()
+					</if>
+						
+					}else if(data.status==2){
+						$("#myalert2").html(data.content);
+						
+						<if condition="$history!=1">
+					confirmt2(data);
+					 shengheshow()
+					</if>
+					
+						return false;
+					}
+                }
+            });
+		}
+		  
+		   function cancelForm(){
+
+			location.href = '/index.php/Home/Index/cancelQuestion/questionnaireId/'+{$Think.get.questionnaireId}+'/rId/{$Think.get.rId}';
+
+		  } 
+		</script>
+		
+		
+		
+		<!-- as -->
+<header class="am-topbar am-topbar-inverse admin-header" style="bottom: 0;top:auto;margin-top:0;background: #eee;color: #333;overflow:hidden;padding-bottom=15px" id="shengchafoot">
+     
+		<button type="button" class="am-btn am-btn-secondary" style="margin-left: 350px" id="shengcha">审核信息&nbsp;<span style='font-size:20px'>↑</span></button>
+ <if condition="$history!=1">    <if condition="$questionInfo[reply][status] == 1 || $questionInfo[reply][status] == 0"> <button type="button" class="am-btn am-btn-secondary"  style="margin-left: 50px;" value="1" onClick="javascript:subajax(this);" >保存</button></if></if>
+        <div class="shengchatab" style="overflow-y:auto ; display:none;padding-left=300px;position:absolute:bottom:50px" id="myalert2" >
+            (请先审核！！！)
+        </div>
+        <script>
+		<if condition="$history==1">
+		 document.onreadystatechange = function () {   
+                 if(document.readyState=="complete") {          
+                     var obj = new Object;
+					obj.value = 9;
+					validata(obj);
+                  }   
+              }   
+</if>
+
+        var onoff=true;
+            $("#shengcha").click(function(event) {
+                if(onoff){
+                    shengheshow()
+					$(this).html("审核信息&nbsp;<span style='font-size:20px'>↓</span>")
+                }else{
+                     $(".admin-main").css('paddingBottom', '51px');
+					$("#shengchafoot").css('height', '51px');
+					$(".shengchatab").hide()
+					$(this).html("审核信息&nbsp;<span style='font-size:20px'>↑</span>")
+					onoff=!onoff; 
+                }
+               
+            });
+			
+			function shengheshow(){
+			  $(".admin-main").css('paddingBottom', '300px');
+					$("#shengchafoot").css('height', '300px').css("paddingBottom",'15px');
+					$(".shengchatab").show().css("height","250px").css("paddingBottom",'155px').css("paddingLeft",'300px').css({
+					"position":"absolute",
+					"bottom":"10px",
+					"width":"100%"
+				});
+                 onoff=false;
+			
+			}
+        </script>
+    </header>
+<!-- ae -->
+
+
+<!--shengcha-->
+
+<script>
+
+</script>

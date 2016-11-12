@@ -1,0 +1,92 @@
+
+<form name="search" action="{:U('Admin/Questionnaire/usersDetail',array('id'=>I('get.id'),'time'=>$time))}" method="post">
+	 <div class="table-tools">
+        <input type="radio" name="status" class="btn btn-primary" title="已提交" onClick="javascript:gohref(1);" value="1" <if condition="I('status')==1">checked</if>/><i class="glyphicon">已提交({$count.submitcount})</i> 
+        <input type="radio" name="status"  class="btn btn-primary" title="未提交" onClick="javascript:gohref(0);" value="0"  <if condition="I('status')==0">checked</if>/><i class="glyphicon">未提交({$count.nosubmitcount})</i><i class="glyphicon">应报数({$count[nosubmitcount]+$count[submitcount]}) </i>
+		<select name="time">
+		 <foreach name="season" item="date">
+              <option value="{$date}" <if condition="$date == $time">selected</if>>{$date}</option>
+             </foreach>
+		</select>
+		<span><input type="text" name="zzjgdm" placeholder="组织机构代码"/></span>
+		<span><input type="text" name="dwxxmc" placeholder="单位名称"/></span>
+		<span><button  onclick="document.search.action='{:U('Admin/Questionnaire/usersDetail',array('id'=>$id,'status'=>$status))}';document.search.submit();">搜索</button></span>
+		<button onclick="document.search.action='{:U('Admin/Questionnaire/exportList')}';document.search.submit();">导出为csv</button>
+    </div>
+</form>	
+    <table id="reply-table" class="table table-striped table-hover table-condensed datatable">
+        <thead>
+        <tr>
+            <th> ID</th>
+            <th>用户名</th>
+			<th>单位名称</th>
+            <th>真实姓名</th>
+          
+            <th>电话</th>
+            <th>分机号</th>
+            <th>手机号</th>
+			<th>统计从业资格证号</th>
+			
+			<th>状态</th>
+			<th>提示信息</th>
+			<th>是否验收</th>
+			<th>操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        <volist name="userList" id="user">
+            <tr>
+                <td>  {$user.id}</td>
+                
+                <td>{$user.username}</td>
+				<td>{$user.dwmc}</td>
+                <td>{$user.realname}</td>
+              
+                <td>{$user.telephone}</td>
+				<td>{$user.subphone}</td>
+				<td>{$user.mobilephone}</td>
+				<td>{$user.tjcyzgzh}</td>
+
+				<td><if condition="$user[status]==2">已提交<elseif condition="$user[status]==1"/>已保存<else/>未提交</if></td>
+          <td><if condition="$user[rcontent] neq ''">有<else/>无</if></td>
+		<td>
+		<if condition="$user[status]==2">
+		<if condition="$user['sfcy']==0"><a href="javascript:disp_confirm({$user[rid]})">验收</a><else/>已验收</if>
+		<else/>
+		未提交
+		</if>
+		</td>
+			   <td>
+			   <if condition="$user[rid]!=''">
+			    <span class=" fa-times"><a href="{:U('Admin/Reply/info',array('questionnaireid'=>$user[questionnaire_id],'rid'=>$user[rid]))}">查看填报结果</a></span>
+                   
+					<else/>
+					  <span class=" fa-times">未填报</span>
+                   
+					</if>
+                </td>
+            </tr>
+        </volist>
+        </tbody>
+    </table>
+
+<script type="text/javascript">
+
+
+
+function disp_confirm(id)
+  {
+  var r=confirm("确定要验收吗")
+  if (r==true)
+    {
+    location.href="/index.php/Admin/Questionnaire/replyYanshou/id/"+id;
+    }
+  else
+    {
+ //   document.write("You pressed Cancel!")
+    }
+  }
+function gohref(status){
+	location.href = "/index.php/Admin/Questionnaire/usersDetail/id/{$Think.get.id}/status/"+status;
+}
+</script>

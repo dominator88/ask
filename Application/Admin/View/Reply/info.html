@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="http://apps.bdimg.com/libs/bootstrap/3.2.0/css/bootstrap.min.css">
+	
+
+</head>
+<body>
+	 <!-- <2016/6/15修改> s-->
+	 <form action="" method="post">
+                                <div class="col-xs-12 am-u-md-8 am-u-md-pull-4">
+                                    
+                                    <style>
+                                    table input[type=text] {
+                                        border: none;
+                                        outline: none;
+                                        border-bottom: 1px solid #333;
+                                        background: transparent;
+                                    }
+                                    table{font-size: 12px!important;}
+                                    table h3{font-size: 12px;margin: 0;padding: 0;padding-top: 5px}
+                                    table label {
+                                        font-size: 12px!important
+                                    }
+                                    table label span{margin-bottom: 5px}
+                                    table tr td {
+                                        border-left: 1px solid #ddd;
+                                        border-right: 1px solid #ddd;
+                                    }
+                                    </style>
+                                    <div class="am-g" style="max-width: 1100px;">
+                             
+			<form id="qform" action="{:U('Home/Index/submitQuestion',array('questionnaireId'=>I('questionnaireId')))}" method="post">
+                <div class="am-g" style="max-width: 900px">
+           <table class="table table-bordered table-striped table-hover ">
+    <thead>
+        <tr>
+            <th colspan="2"><h3 style="text-align: center;">制造业采购经理调查问卷</h3>
+<div class="am-fr"><small> 表    号： N241表</small><br>
+<small> 制表机关：   国家统计局</small><br>
+<small>     文    号： 国统字(2015)95号</small><br>
+<small> 有效期至：   2017年1月</small><br>
+<small> 2015年10月</small><br></div>
+
+
+
+            </th>
+           
+        </tr>
+    </thead>
+	
+    <tbody>
+    <tr style="max-height: 64px;min-height:64px">
+            <td class="am-u-sm-6"style="max-height: 64px;min-height: 64px" >
+               <div class="am-u-sm-12 am-cf" >
+                        <h3 class=" "><span class="am-badge am-badge-primary">A</span>单位详细名称</h3>                       
+                        <label class="am-checkbox am-u-sm-12" style="margin: 0">
+                            <input type="text"  data-am-ucheck style="width: 100%" value="{$user.Company.dwxxmc}" disabled> 
+                        </label>
+                       
+                    </div>
+            </td>
+            <td class="am-u-sm-6">
+            
+               <div class="am-u-sm-12" >
+                       
+                       <h3 class="am-fl" ><span class="am-badge am-badge-primary" >B</span>组织机构代码</h3>
+                        <label class="am-checkbox am-u-sm-6 " style="margin: 0">
+                            <input  class="am-fl" type="text"  data-am-ucheck  value="{$user.Company.zzjgdm}" disabled> 
+                        </label>
+                        
+                       
+                    </div> 
+                    <div class="am-u-sm-12 tanjie" >
+                       
+                        <h3 class="am-fl" >	统一社会信用代码</h3>
+                        <label class="am-checkbox am-u-sm-6 " style="margin: 0">
+                           <input  class="am-fl" type="text"  value="{$user[Company][shxydm]}" data-am-ucheck disabled> 
+                        </label>
+                        
+                       
+                    </div> 
+
+            </td>
+            
+        </tr>
+		
+		 <volist name="data" id="d">
+		 <if condition="$d['qtype'] eq 'text'">
+        <tr>
+             <td  colspan="2">  
+			 <div class="am-u-sm-12" >
+                       
+                       <h3 class="am-fl" > {$d.qname}</h3>
+					
+					    <foreach name="d['options']" item="option" key="k">
+						
+                        <label class="am-checkbox am-u-sm-12 " style="margin: 0">
+                                {$option[text]|trim}<input  class="am-fl" type="text" value="{$option[value]}" name="{$d.qid}"  onchange="textput($(this))"  data-am-ucheck  style="width: 100%"/> 
+                        </label>
+						
+						</foreach>
+                        
+                        <input type="hidden" name="{$d.qid}"  value='{$d.answer}'/> 
+                       
+                    </div></td> 
+
+        </tr>
+		
+		 <elseif condition="$d['qtype'] eq 'checkbox'"/>
+        <tr >
+            <td colspan="2">
+               <div class="am-u-sm-12 tanjie" id="tanjei1">
+                        <h3>{$d.qname}</h3>
+						
+                       <foreach name="d['options']" item="option" key="k">
+						<if condition="$option[type]=='checkbox'">
+						
+						
+                        <label class="am-checkbox am-u-sm-3" style="margin: 0">
+                            <input type="checkbox" value="{$k}" name="{$d.qid}"  data-am-ucheck onchange="s($(this),'#id{$d.qid}')" <if condition="$option[selected]==1">checked</if>/>  {$option['text']}
+                        </label>
+                       <elseif condition="$option[type]=='checkbox_othertext'"/>
+						<label class="am-checkbox am-u-sm-12 " style="margin: 0">
+							  <input type="checkbox" value="{$k}" name="other{$d.qid}"  onchange="s($(this),'#id{$d.qid}')" data-am-ucheck  <if condition="$option[selected]==1">checked</if>/>  其它<input type="text" id="o_other" value="{$option.text}" name="othertext{$d.qid}" onchange="other()"/>
+						</label>
+						</if>
+					   
+						</foreach>
+                       <input type="hidden" id="id{$d.qid}" name="{$d.qid}" value='{$d.answer}' />
+
+                    </div>
+
+
+            </td>
+            
+        </tr>
+        <elseif condition="$d['qtype'] eq 'radio'"/>
+        <tr >
+            <td colspan="2">
+              <div class="am-u-sm-12">
+                        <h3>{$d.qname}</h3>
+					
+                        <foreach name="d['options']" item="option" key="k">
+						 
+						<if condition="$option['text'] neq ''">
+                        <label class="am-radio am-u-sm-6 am-u-lg-3 am-u-md-6" style="margin: 0">
+                            <input type="radio" name="{$d.qid}" value="{$k}" data-am-ucheck <if condition="$option[selected]==1">checked</if>/> {$option['text']}
+                        </label>
+                        </if>
+				
+						</foreach>
+                        
+                    </div>
+
+            </td>
+            
+        </tr>
+		</if>
+		</volist>
+    </tbody>
+	
+</table>
+
+<div>
+采购经理(填报人)：	
+<input  type="text" value="{$user.realname}" name="lxrxm" onchange="textput($(this))" data-am-ucheck="" style="width: 10%" disabled>
+电话：	
+<input  type="text" value="{$user.telephone}" name="lxdianhua" onchange="textput($(this))" data-am-ucheck="" style="width: 10%" disabled>
+分机号：<input  type="text" value="{$user.subphone}" name="lxr" onchange="textput($(this))" data-am-ucheck="" style="width: 10%" disabled>	
+报出日期：	
+<input  type="text" value="<if condition="$user[createtime]!=''">{$user[createtime]|date='Y-m-d',###}</if>" name="lxr" onchange="textput($(this))" data-am-ucheck="" style="width: 10%" disabled>
+ <br/>
+</div>
+<style>
+										.am-table {
+  width: 100%;
+  margin-bottom: 1.6rem;
+  border-spacing: 0;
+  border-collapse: separate;
+}
+.am-table > thead > tr > th,
+.am-table > tbody > tr > th,
+.am-table > tfoot > tr > th,
+.am-table > thead > tr > td,
+.am-table > tbody > tr > td,
+.am-table > tfoot > tr > td {
+  padding: 0.7rem;
+  line-height: 1.6;
+  vertical-align: top;
+  border-top: 1px solid #ddd;
+}
+.am-table > thead > tr > th {
+  vertical-align: bottom;
+  border-bottom: 1px solid #ddd;
+}
+.am-table > caption + thead > tr:first-child > th,
+.am-table > colgroup + thead > tr:first-child > th,
+.am-table > thead:first-child > tr:first-child > th,
+.am-table > caption + thead > tr:first-child > td,
+.am-table > colgroup + thead > tr:first-child > td,
+.am-table > thead:first-child > tr:first-child > td {
+  border-top: 0;
+}
+.am-table > tbody + tbody tr:first-child td {
+  border-top: 2px solid #ddd;
+}
+/* Bordered version */
+.am-table-bordered {
+  border: 1px solid #ddd;
+  border-left: none;
+}
+.am-table-bordered > thead > tr > th,
+.am-table-bordered > tbody > tr > th,
+.am-table-bordered > tfoot > tr > th,
+.am-table-bordered > thead > tr > td,
+.am-table-bordered > tbody > tr > td,
+.am-table-bordered > tfoot > tr > td {
+  border-left: 1px solid #ddd;
+  /*&:first-child {
+          border-left: none;
+        }*/
+}
+.am-table-bordered > tbody > tr:first-child > th,
+.am-table-bordered > tbody > tr:first-child > td {
+  border-top: none;
+}
+.am-table-bordered > thead + tbody > tr:first-child > th,
+.am-table-bordered > thead + tbody > tr:first-child > td {
+  border-top: 1px solid #ddd;
+}
+
+										</style>
+{$validatacontent}
+<script>
+var json = eval('('+'{$remarks}'+')'); 
+for(j in json){
+	$('#'+j).val(json[j]);
+}
+</script>
+
+
+
+                </div>
+                                                       
+                                    </div>
+                                    
+                                   
+                                </div>
+								</form>
+                                <!-- <2016/6/15修改>e -->
+</body>
+</html>

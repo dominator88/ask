@@ -1,0 +1,142 @@
+<form action="{:U('Questionnaire/add')}" method="post" class="form-horizontal">
+
+    <div class="form-group">
+        <label class="col-md-3 col-xs-12 control-label"></label>
+        <div class="col-md-6 col-xs-12">
+            <h2>添加问卷</h2>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-md-3 col-xs-12 control-label">问卷类型</label>
+        <div class="col-md-6 col-xs-12">                                                                                            
+            <select name="type" class="form-control select">
+                <option value="survey" <eq name="type" value="survey">selected="selected"</eq> >调研卷</option>
+                <!--option value="exam" <eq name="type" value="exam">selected="selected"</eq> >考试卷</option-->
+            </select>
+        </div>
+        
+    </div>
+
+	<div class="form-group">
+
+        <label class="col-md-3 col-xs-12 control-label">问卷别名</label>
+        <div class="col-md-6 col-xs-12">                                                                                             
+                                                     
+            <input name="aliasname" type="text" class="form-control" value="{$aliasname}" />
+        </div>
+        
+       
+    </div>
+	
+    <div class="form-group">
+        <label class="col-md-3 col-xs-12 control-label">问卷名称</label>
+        <div class="col-md-6 col-xs-12">                                            
+            <input name="name" type="text" class="form-control" value="{$name}" />
+        </div>
+    </div>
+    
+    <div class="form-group">
+        <label class="col-md-3 col-xs-12 control-label">问卷描述</label>
+        <div class="col-md-6 col-xs-12">                                            
+            <textarea name="description" class="form-control" rows="10">{$description}</textarea>
+        </div>
+    </div>
+    
+     <div class="form-group">    
+		 <label class="col-md-3 col-xs-12 control-label">开始日期 ~~ 失效日期</label>
+        <div class="col-md-6 col-xs-12">
+            <div class="col-md-6 col-xs-12" style="width:550px">  
+				<select name="start_date" class="select" style="width:70px">
+				<option value="1">1</option>
+				<option value="2">2</option>
+				<option value="3">3</option>
+				<option value="4">4</option>
+				<option value="5">5</option>
+				<option value="6">6</option>
+				<option value="7">7</option>
+				<option value="8">8</option>
+				<option value="9">9</option>
+				<option value="10">10</option>
+				<option value="11">11</option>
+				<option value="12">12</option>
+				<option value="13">13</option>
+				<option value="14">14</option>
+				<option value="15">15</option>
+				<option value="16">16</option>
+				<option value="17">17</option>
+				<option value="18">18</option>
+				<option value="19">19</option>
+				<option value="20">20</option>
+				<option value="21">21</option>
+				<option value="22">22</option>
+				<option value="23">23</option>
+				<option value="24">24</option>
+				<option value="25">25</option>
+				<option value="26">26</option>
+				<option value="27">27</option>
+				<option value="28">28</option>
+				<option value="29">29</option>
+				<option value="30">30</option>
+				<option value="31">31</option>
+				
+				</select>
+				&nbsp;~~&nbsp;
+				<select name="expire_date" class="select" style="width:70px">
+				<option value="1">1</option>
+				<option value="2">2</option>
+				<option value="3">3</option>
+				<option value="4">4</option>
+				<option value="5">5</option>
+				<option value="6">6</option>
+				<option value="7">7</option>
+				<option value="8">8</option>
+				<option value="9">9</option>
+				<option value="10">10</option>
+				<option value="11">11</option>
+				<option value="12">12</option>
+				<option value="13">13</option>
+				<option value="14">14</option>
+				<option value="15">15</option>
+				<option value="16">16</option>
+				<option value="17">17</option>
+				<option value="18">18</option>
+				<option value="19">19</option>
+				<option value="20">20</option>
+				<option value="21">21</option>
+				<option value="22">22</option>
+				<option value="23">23</option>
+				<option value="24">24</option>
+				<option value="25">25</option>
+				<option value="26">26</option>
+				<option value="27">27</option>
+				<option value="28">28</option>
+				<option value="29">29</option>
+				<option value="30">30</option>
+				<option value="31">31</option>
+				</select>
+               
+            </div>
+			<small>月份内不足31天,按实际天数计算</small>
+        </div>
+	
+       
+    </div>
+
+    <div>
+        <div class="col-md-3 col-xs-12"></div>
+        <div class="col-md-6 col-xs-12">
+            <present name="errorNote">
+                <div class="alert alert-danger" role="alert">
+                    <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <strong>{$errorNote}</strong>
+                </div>                        
+            </present>
+            <div class="form-group">
+                <div class="col-md-6"><input type="reset" class="btn btn-block btn-default" value=" 清 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 空 " /></div>
+                <div class="col-md-6"><button class="btn btn-block btn-info pull-right"> 提 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 交 </button></div>
+            </div>
+        </div>
+    </div>
+
+</form>
